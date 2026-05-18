@@ -1,7 +1,7 @@
 config:
   # Registries being watched
   registries:
-    - name: GAR Asia Southeast
+    - name: GAR US Central
       prefix: us-central1-docker.pkg.dev
       api_url: https://us-central1-docker.pkg.dev
       credentials: pullsecret:argocd/gar-credentials
