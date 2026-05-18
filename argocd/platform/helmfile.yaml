@@ -1,0 +1,23 @@
+repositories:
+  - name: argo
+    url: https://argoproj.github.io/argo-helm
+
+releases:
+  - name: argocd
+    namespace: argocd
+    chart: argo/argo-cd
+    version: "7.7.23"
+    createNamespace: true
+    wait: true
+    values:
+      - ./values/argocd-values.yaml
+
+  - name: argocd-image-updater
+    namespace: argocd
+    chart: argo/argocd-image-updater
+    version: "0.11.0"
+    needs:
+      - argocd/argocd
+    wait: true
+    values:
+      - ./values/image-updater-values.yaml
