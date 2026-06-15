@@ -1,27 +1,14 @@
 config:
-  # Registries being watched
+  git.user: "argocd-image-updater"
+  git.email: "argocd-image-updater@users.noreply.github.com"
+  kube.events: false
+
   registries:
     - name: GAR US Central
       prefix: us-central1-docker.pkg.dev
       api_url: https://us-central1-docker.pkg.dev
       credentials: pullsecret:argocd/gar-credentials
-      defaultns: library
       insecure: false
-
-  # Cara image-updater write back ke git
-  argocd:
-    grpcWeb: true
-    serverAddress: argocd-server.argocd.svc.cluster.local
-    insecure: true
-    plaintext: true
-
-# Write back ke git via commit
-updateStrategy: "semver"
-
-git:
-  # Email dan name untuk commit otomatis oleh image-updater
-  email: "argocd-image-updater@users.noreply.github.com"
-  user: "argocd-image-updater"
 
 serviceAccount:
   create: true

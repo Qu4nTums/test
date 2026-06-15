@@ -1,0 +1,136 @@
+apiVersion: argocd-image-updater.argoproj.io/v1alpha1
+kind: ImageUpdater
+metadata:
+  name: prod-image-updater
+  namespace: argocd
+spec:
+  commonUpdateSettings:
+    updateStrategy: newest-build
+  writeBackConfig:
+    method: "git:secret:argocd/git-creds"
+    gitConfig:
+      repository: "https://github.com/Qu4nTums/test.git"
+      branch: main
+
+  applicationRefs:
+    - namePattern: "root"
+
+      images:
+        - alias: adservice
+          imageName: "us-central1-docker.pkg.dev/google-samples/microservices-demo/adservice"
+          writeBackConfig:
+            gitConfig:
+              writeBackTarget: "helmvalues:environments/prod/values/image-digest/adservice.yaml"
+          manifestTargets:
+            helm:
+              digest: image.digest
+
+      images:
+        - alias: cartservice
+          imageName: "us-central1-docker.pkg.dev/google-samples/microservices-demo/cartservice"
+          writeBackConfig:
+            gitConfig:
+              writeBackTarget: "helmvalues:environments/prod/values/image-digest/cartservice.yaml"
+          manifestTargets:
+            helm:
+              digest: image.digest
+
+      images:
+        - alias: checkoutservice
+          imageName: "us-central1-docker.pkg.dev/google-samples/microservices-demo/checkoutservice"
+          writeBackConfig:
+            gitConfig:
+              writeBackTarget: "helmvalues:environments/prod/values/image-digest/checkoutservice.yaml"
+          manifestTargets:
+            helm:
+              digest: image.digest
+
+      images:
+        - alias: currencyservice
+          imageName: "us-central1-docker.pkg.dev/google-samples/microservices-demo/currencyservice"
+          writeBackConfig:
+            gitConfig:
+              writeBackTarget: "helmvalues:environments/prod/values/image-digest/currencyservice.yaml"
+          manifestTargets:
+            helm:
+              digest: image.digest
+
+      images:
+        - alias: emailservice
+          imageName: "us-central1-docker.pkg.dev/google-samples/microservices-demo/emailservice"
+          writeBackConfig:
+            gitConfig:
+              writeBackTarget: "helmvalues:environments/prod/values/image-digest/emailservice.yaml"
+          manifestTargets:
+            helm:
+              digest: image.digest
+
+      images:
+        - alias: frontend
+          imageName: "us-central1-docker.pkg.dev/google-samples/microservices-demo/frontend"
+          writeBackConfig:
+            gitConfig:
+              writeBackTarget: "helmvalues:environments/prod/values/image-digest/frontend.yaml"
+          manifestTargets:
+            helm:
+              digest: image.digest
+
+      images:
+        - alias: loadgenerator
+          imageName: "us-central1-docker.pkg.dev/google-samples/microservices-demo/loadgenerator"
+          writeBackConfig:
+            gitConfig:
+              writeBackTarget: "helmvalues:environments/prod/values/image-digest/loadgenerator.yaml"
+          manifestTargets:
+            helm:
+              digest: image.digest
+
+      images:
+        - alias: paymentservice
+          imageName: "us-central1-docker.pkg.dev/google-samples/microservices-demo/paymentservice"
+          writeBackConfig:
+            gitConfig:
+              writeBackTarget: "helmvalues:environments/prod/values/image-digest/paymentservice.yaml"
+          manifestTargets:
+            helm:
+              digest: image.digest
+
+      images:
+        - alias: productcatalogservice
+          imageName: "us-central1-docker.pkg.dev/google-samples/microservices-demo/productcatalogservice"
+          writeBackConfig:
+            gitConfig:
+              writeBackTarget: "helmvalues:environments/prod/values/image-digest/productcatalogservice.yaml"
+          manifestTargets:
+            helm:
+              digest: image.digest
+
+      images:
+        - alias: recommendationservice
+          imageName: "us-central1-docker.pkg.dev/google-samples/microservices-demo/recommendationservice"
+          writeBackConfig:
+            gitConfig:
+              writeBackTarget: "helmvalues:environments/prod/values/image-digest/recommendationservice.yaml"
+          manifestTargets:
+            helm:
+              digest: image.digest
+
+      images:
+        - alias: shippingservice
+          imageName: "us-central1-docker.pkg.dev/google-samples/microservices-demo/shippingservice"
+          writeBackConfig:
+            gitConfig:
+              writeBackTarget: "helmvalues:environments/prod/values/image-digest/shippingservice.yaml"
+          manifestTargets:
+            helm:
+              digest: image.digest
+
+      images:
+        - alias: shoppingassistantservice
+          imageName: "us-central1-docker.pkg.dev/google-samples/microservices-demo/shoppingassistantservice"
+          writeBackConfig:
+            gitConfig:
+              writeBackTarget: "helmvalues:environments/prod/values/image-digest/shoppingassistantservice.yaml"
+          manifestTargets:
+            helm:
+              digest: image.digest

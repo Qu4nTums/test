@@ -1,27 +1,20 @@
 {
-  extends: [
-    'github>GoogleCloudPlatform/kubernetes-engine-samples//.github/renovate-configs/dee-platform-ops.json5',
-    'schedule:earlyMondays',
+  "extends": [
+    "github>GoogleCloudPlatform/kubernetes-engine-samples//.github/renovate-configs/dee-platform-ops.json5",
+    "schedule:earlyMondays"
   ],
-  'pip-compile': {
-    enabled: true,
-    managerFilePatterns: [
-      '/(^|/)requirements\\.txt$/',
-    ],
+  "pip-compile": {
+    "enabled": true,
+    "managerFilePatterns": ["/(^|/)requirements\\.txt$/"]
   },
-  pip_requirements: {
-    enabled: false,
+  "pip_requirements": {
+    "enabled": false
   },
-  constraints: {
-    python: '~=3.11.0',
+  "constraints": {
+    "python": "~=3.11.0"
   },
-  kubernetes: {
-    managerFilePatterns: [
-      '/\\.yaml$/',
-    ],
-    ignorePaths: [
-      'release/**',
-      'kustomize/base/**',
-    ],
-  },
+  "kubernetes": {
+    "managerFilePatterns": ["/\\.yaml$/"],
+    "ignorePaths": ["release/**", "kustomize/base/**"]
+  }
 }

@@ -1,18 +1,15 @@
 global:
-  domain: argocd.host.local.internal
+  domain: argocd.host.local
 
 configs:
   params:
-    # Disable TLS di ArgoCD server karena TLS di-handle Istio
-    server.insecure: true
+    server.insecure: "true"
 
   cm:
     kustomize.enabled: "true"
-    # Resource tracking via annotation, more reliable than label
     application.resourceTrackingMethod: annotation
 
   rbac:
-    # Hanya admin yang bisa manage apps
     policy.default: role:readonly
     policy.csv: |
       p, role:admin, applications, *, */*, allow
@@ -22,10 +19,9 @@ configs:
 
 server:
   ingress:
-    enabled: false # pakai Istio VirtualService
+    enabled: false
 
 repoServer:
-  # Tambah memory sedikit untuk helm template rendering
   resources:
     limits:
       cpu: 500m
@@ -35,6 +31,7 @@ repoServer:
       memory: 256Mi
 
 applicationSet:
-  enabled: false # tidak dipakai untuk setup ini
+  replicas: 0 # disable ApplicationSet controller
+
 notifications:
   enabled: false
