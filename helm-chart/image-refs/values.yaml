@@ -1,0 +1,59 @@
+adservice:
+  image:
+    tag: ""
+    digest: ""
+
+cartservice:
+  image:
+    tag: ""
+    digest: ""
+
+checkoutservice:
+  image:
+    tag: ""
+    digest: ""
+
+currencyservice:
+  image:
+    tag: ""
+    digest: ""
+
+emailservice:
+  image:
+    tag: ""
+    digest: ""
+
+frontend:
+  image:
+    tag: ""
+    digest: ""
+
+loadgenerator:
+  image:
+    tag: ""
+    digest: ""
+
+paymentservice:
+  image:
+    tag: ""
+    digest: ""
+
+productcatalogservice:
+  image:
+    tag: ""
+    digest: ""
+
+recommendationservice:
+  image:
+    tag: ""
+    digest: ""
+
+shippingservice:
+  image:
+    tag: ""
+    digest: ""
+
+shoppingassistantservice:
+  image:
+    tag: ""
+    digest: ""

@@ -1,0 +1,101 @@
+apiVersion: argocd-image-updater.argoproj.io/v1alpha1
+kind: ImageUpdater
+metadata:
+  name: prod-image-updater
+  namespace: argocd
+spec:
+  commonUpdateSettings:
+    updateStrategy: "semver"
+  writeBackConfig:
+    method: "git"
+    gitConfig:
+      repository: "https://github.com/Qu4nTums/test.git"
+      branch: main
+      writeBackTarget: "helmvalues:/helm-chart/image-refs/values.yaml"
+
+  applicationRefs:
+    - namePattern: "root"
+      images:
+        - alias: "adservice"
+          imageName: "us-central1-docker.pkg.dev/google-samples/microservices-demo/adservice"
+          manifestTargets:
+            helm:
+              tag: adservice.image.tag
+              digest: adservice.image.digest
+
+        - alias: "cartservice"
+          imageName: "us-central1-docker.pkg.dev/google-samples/microservices-demo/cartservice"
+          manifestTargets:
+            helm:
+              tag: cartservice.image.tag
+              digest: cartservice.image.digest
+
+        - alias: "checkoutservice"
+          imageName: "us-central1-docker.pkg.dev/google-samples/microservices-demo/checkoutservice"
+          manifestTargets:
+            helm:
+              tag: checkoutservice.image.tag
+              digest: checkoutservice.image.digest
+
+        - alias: "currencyservice"
+          imageName: "us-central1-docker.pkg.dev/google-samples/microservices-demo/currencyservice"
+          manifestTargets:
+            helm:
+              tag: currencyservice.image.tag
+              digest: currencyservice.image.digest
+
+        - alias: "emailservice"
+          imageName: "us-central1-docker.pkg.dev/google-samples/microservices-demo/emailservice"
+          manifestTargets:
+            helm:
+              tag: emailservice.image.tag
+              digest: emailservice.image.digest
+
+        - alias: "frontend"
+          imageName: "us-central1-docker.pkg.dev/google-samples/microservices-demo/frontend"
+          manifestTargets:
+            helm:
+              tag: frontend.image.tag
+              digest: frontend.image.digest
+
+        - alias: "loadgenerator"
+          imageName: "us-central1-docker.pkg.dev/google-samples/microservices-demo/loadgenerator"
+          manifestTargets:
+            helm:
+              tag: loadgenerator.image.tag
+              digest: loadgenerator.image.digest
+
+        - alias: "paymentservice"
+          imageName: "us-central1-docker.pkg.dev/google-samples/microservices-demo/paymentservice"
+          manifestTargets:
+            helm:
+              tag: paymentservice.image.tag
+              digest: paymentservice.image.digest
+
+        - alias: "productcatalogservice"
+          imageName: "us-central1-docker.pkg.dev/google-samples/microservices-demo/productcatalogservice"
+          manifestTargets:
+            helm:
+              tag: productcatalogservice.image.tag
+              digest: productcatalogservice.image.digest
+
+        - alias: "recommendationservice"
+          imageName: "us-central1-docker.pkg.dev/google-samples/microservices-demo/recommendationservice"
+          manifestTargets:
+            helm:
+              tag: recommendationservice.image.tag
+              digest: recommendationservice.image.digest
+
+        - alias: "shippingservice"
+          imageName: "us-central1-docker.pkg.dev/google-samples/microservices-demo/shippingservice"
+          manifestTargets:
+            helm:
+              tag: shippingservice.image.tag
+              digest: shippingservice.image.digest
+
+        - alias: "shoppingassistantservice"
+          imageName: "us-central1-docker.pkg.dev/google-samples/microservices-demo/shoppingassistantservice"
+          manifestTargets:
+            helm:
+              tag: shoppingassistantservice.image.tag
+              digest: shoppingassistantservice.image.digest

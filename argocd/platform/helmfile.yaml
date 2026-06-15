@@ -6,7 +6,7 @@ releases:
   - name: argocd
     namespace: argocd
     chart: argo/argo-cd
-    version: "7.7.23"
+    version: "9.5.14"
     createNamespace: true
     wait: true
     values:
@@ -15,7 +15,7 @@ releases:
   - name: argocd-image-updater
     namespace: argocd
     chart: argo/argocd-image-updater
-    version: "0.11.0"
+    version: "1.2.1"
     needs:
       - argocd/argocd
     wait: true
