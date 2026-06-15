@@ -7,9 +7,9 @@ spec:
   commonUpdateSettings:
     updateStrategy: "semver"
   writeBackConfig:
-    method: "git"
+    method: "git:secret:argocd/github-test-repo"
     gitConfig:
-      repository: "https://github.com/Qu4nTums/test.git"
+      repository: "git@github.com:Qu4nTums/test.git"
       branch: main
       writeBackTarget: "helmvalues:/helm-chart/image-refs/values.yaml"
 

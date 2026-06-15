@@ -8,7 +8,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/Qu4nTums/test.git
+    repoURL: git@github.com:Qu4nTums/test.git
     targetRevision: main
     path: helm-chart
   destination:
